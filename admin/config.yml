@@ -1,0 +1,2351 @@
+backend:
+  name: git-gateway
+  branch: main
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: faq
+    label: FAQs
+    folder: cms/faq
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: Please be as concise as possible in your question
+        name: f_response
+        label: Answer
+        widget: text
+        required: true
+      - hint: >-
+          is the question / answer featured on the landing page ? If yes toggle
+          the switch on.
+        name: f_featured-questions
+        label: Featured on the Landing Page ?
+        widget: boolean
+        required: false
+      - hint: should the question appear on the left or the right hand side column ?
+        name: f_column-side
+        label: Column side
+        widget: select
+        required: false
+        options:
+          - label: Left
+            value: Left
+          - label: Right
+            value: Right
+      - hint: Number to order the display of the questions
+        name: f_order
+        label: Order
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: faq
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[faq].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: pools
+    label: Pools
+    folder: cms/pools
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_order
+        label: Order
+        widget: number
+        required: false
+      - hint: >-
+          Please use this format (as example):
+          0x0000000000000000000000000000000000000000000000000000000000000000
+        name: f_id-of-the-pool
+        label: id of the pool
+        widget: string
+        required: false
+      - hint: ''
+        name: f_color
+        label: label background color
+        widget: color
+        required: false
+        enableAlpha: true
+        allowInput: true
+      - hint: ''
+        name: f_label-text-color
+        label: label text color
+        widget: color
+        required: false
+        enableAlpha: true
+        allowInput: true
+      - hint: ''
+        name: f_label
+        label: Label
+        widget: string
+        required: false
+      - hint: ''
+        name: f_apr
+        label: APR
+        widget: string
+        required: false
+      - hint: ''
+        name: f_apr-daily
+        label: APR Daily
+        widget: string
+        required: false
+      - hint: choose either popular pool or index fund pools
+        name: f_category
+        label: category
+        widget: select
+        required: false
+        options:
+          - label: Popular pools
+            value: Popular pools
+          - label: Index Fund pools
+            value: Index Fund pools
+      - hint: ''
+        name: f_token-thumbnail-1
+        label: token thumbnail 1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_token-thumbnail-2
+        label: token thumbnail 2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_token-thumbnail-3
+        label: token thumbnail 3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_token-thumbnail-4
+        label: token thumbnail 4
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_token-thumbnail-5
+        label: token thumbnail 5
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: pools
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[pools].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: sources
+    label: Sources
+    folder: cms/sources
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_thumbnail
+        label: Thumbnail
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: sources
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[sources].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: news
+    label: News
+    folder: cms/news
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: select either twitter, medium, telegram, discord...
+        name: f_source
+        label: Source
+        widget: relation
+        required: true
+        collection: sources
+        value_field: cms/sources/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_url-to-the-news-page
+        label: URL to the news page
+        widget: string
+        required: true
+      - hint: ''
+        name: f_date-of-publiation
+        label: Date of publiation
+        widget: datetime
+        required: true
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: news
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[news].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: launch_date
+    label: Launch dates
+    folder: cms/launch-date
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: 'format: YYYY'
+        name: f_utc-year
+        label: UTC year
+        widget: string
+        required: false
+      - hint: 'format:  MM'
+        name: f_utc-month
+        label: UTC month
+        widget: string
+        required: false
+      - hint: 'format: DD'
+        name: f_utc-day
+        label: UTC day
+        widget: string
+        required: false
+      - hint: 'format: HH'
+        name: f_utc-hour
+        label: UTC hour
+        widget: string
+        required: false
+      - hint: 'format: MM'
+        name: f_utc-minute
+        label: UTC minute
+        widget: string
+        required: false
+      - hint: 'format: SS'
+        name: f_utc-second
+        label: UTC second
+        widget: string
+        required: false
+      - hint: URL of the app to redirect the user to
+        name: f_url
+        label: URL
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: launch-date
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[launch-date].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: progress_bar
+    label: Progress bars
+    folder: cms/progress-bar
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_value
+        label: value
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: progress-bar
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[progress-bar].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: legal_disclaimers
+    label: Legal Disclaimers
+    folder: cms/legal-disclaimers
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Disclaimer legal text
+        name: body
+        widget: markdown
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: legal-disclaimers
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[legal-disclaimers].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: tokenomics
+    label: Tokenomics
+    folder: cms/tokenomics
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_percentage
+        label: Percentage
+        widget: string
+        required: false
+      - hint: ''
+        name: f_token-amount
+        label: Token Amount
+        widget: string
+        required: false
+      - hint: ''
+        name: f_round-date
+        label: Round Date
+        widget: string
+        required: false
+      - hint: ''
+        name: f_amount-raised
+        label: Amount Raised
+        widget: string
+        required: false
+      - hint: ''
+        name: f_lock-up
+        label: Lock-Up
+        widget: string
+        required: false
+      - hint: ''
+        name: f_vesting
+        label: Vesting
+        widget: string
+        required: false
+      - hint: order of appearance in the chart
+        name: f_order
+        label: order
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: tokenomics
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[tokenomics].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: phases
+    label: Phases
+    folder: cms/phases
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_phase
+        label: Phase
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: phases
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[phases].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: roadmap
+    label: Roadmaps
+    folder: cms/roadmap
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: description
+        name: body
+        widget: markdown
+        required: false
+      - hint: Please choose one quarter
+        name: f_quarter
+        label: quarter
+        widget: relation
+        required: true
+        collection: phases
+        value_field: cms/phases/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: any number between 0 and 100 only
+        name: f_perecentage-completed
+        label: perecentage completed
+        widget: number
+        required: true
+      - hint: ''
+        name: f_date-of-milestone-completion
+        label: Rough date of milestone completion
+        widget: string
+        required: true
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: roadmap
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[roadmap].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Wrong, please try again., key: -15b764d8'
+            label: Text
+            name: '-15b764d8'
+            widget: string
+          - hint: 'Original text: Wavelength DEX, key: -4ec4586a'
+            label: Text
+            name: '-4ec4586a'
+            widget: string
+          - hint: 'Original text: the most anticipated launch on Velas, key: 28d8187'
+            label: Text
+            name: 28d8187
+            widget: string
+          - hint: >-
+              Original text: We are building a decentralised trading platform
+              where users own their funds and the exchange itself., key:
+              477c9993
+            label: Text
+            name: 477c9993
+            widget: text
+          - hint: 'Original text: Roadmap, key: -4b5115e4'
+            label: Text
+            name: '-4b5115e4'
+            widget: string
+          - hint: 'Original text: Tokenomics, key: 7dbcc9c2'
+            label: Text
+            name: 7dbcc9c2
+            widget: string
+          - hint: 'Original text: 00, key: 600'
+            label: Text
+            name: '600'
+            widget: string
+          - hint: 'Original text: Days, key: 206477'
+            label: Text
+            name: '206477'
+            widget: string
+          - hint: 'Original text: :, key: 3a'
+            label: Text
+            name: 3a
+            widget: string
+          - hint: 'Original text: hours , key: -4834e50f'
+            label: Text
+            name: '-4834e50f'
+            widget: string
+          - hint: 'Original text: minutes, key: 3f791cdf'
+            label: Text
+            name: 3f791cdf
+            widget: string
+          - hint: 'Original text: seconds, key: 756d4a7f'
+            label: Text
+            name: 756d4a7f
+            widget: string
+          - hint: 'Original text: TVL, key: 1460a'
+            label: Text
+            name: 1460a
+            widget: string
+          - hint: 'Original text: $0,000,000.00, key: 1412ce9a'
+            label: Text
+            name: 1412ce9a
+            widget: string
+          - hint: 'Original text: App, key: 10201'
+            label: Text
+            name: '10201'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: >-
+              Original text: Built by a team of seasoned professionals , Velas
+              DEX aims to deliver a high fidelity environment for trading new
+              generation financial products in an efficient and transparent
+              manner., key: 67fe1562
+            label: Text
+            name: 67fe1562
+            widget: text
+          - hint: 'Original text: Projected APY, key: f13342'
+            label: Text
+            name: f13342
+            widget: string
+          - hint: 'Original text: Commit Liquidity, key: -57e111b7'
+            label: Text
+            name: '-57e111b7'
+            widget: string
+          - hint: 'Original text: Your , key: 51a662d'
+            label: Text
+            name: 51a662d
+            widget: string
+          - hint: 'Original text: VLX, key: 14c62'
+            label: Text
+            name: 14c62
+            widget: string
+          - hint: 'Original text:  Stake, key: 3b62e73a'
+            label: Text
+            name: 3b62e73a
+            widget: string
+          - hint: 'Original text: 500, key: ccf5'
+            label: Text
+            name: ccf5
+            widget: string
+          - hint: 'Original text: Yearly return, key: 33624b66'
+            label: Text
+            name: 33624b66
+            widget: string
+          - hint: 'Original text: 5%, key: 690'
+            label: Text
+            name: '690'
+            widget: string
+          - hint: 'Original text: Daily, key: 3ebedf9'
+            label: Text
+            name: 3ebedf9
+            widget: string
+          - hint: 'Original text: 0.07 VLX, key: 50969247'
+            label: Text
+            name: '50969247'
+            widget: string
+          - hint: 'Original text: $0.83, key: 211d39d'
+            label: Text
+            name: 211d39d
+            widget: string
+          - hint: 'Original text: Montly, key: -764ae56b'
+            label: Text
+            name: '-764ae56b'
+            widget: string
+          - hint: 'Original text: 2.08 VLX, key: 20670386'
+            label: Text
+            name: '20670386'
+            widget: string
+          - hint: 'Original text: Yearly, key: -62639956'
+            label: Text
+            name: '-62639956'
+            widget: string
+          - hint: 'Original text: 25.00 VLX, key: 4cf77c4d'
+            label: Text
+            name: 4cf77c4d
+            widget: string
+          - hint: 'Original text: Staking, key: -ddf7e69'
+            label: Text
+            name: '-ddf7e69'
+            widget: string
+          - hint: 'Original text: Calculator, key: 32f54722'
+            label: Text
+            name: 32f54722
+            widget: string
+          - hint: 'Original text: Token Allocation, key: 6b2449a7'
+            label: Text
+            name: 6b2449a7
+            widget: string
+          - hint: 'Original text: %, key: 25'
+            label: Text
+            name: '25'
+            widget: string
+          - hint: 'Original text: Token Amount, key: 63cdc49f'
+            label: Text
+            name: 63cdc49f
+            widget: string
+          - hint: 'Original text: Pre-Minted Tokens, key: -5a346fb1'
+            label: Text
+            name: '-5a346fb1'
+            widget: string
+          - hint: 'Original text: Vesting, key: 783c4072'
+            label: Text
+            name: 783c4072
+            widget: string
+          - hint: 'Original text: Team, key: 27b67d'
+            label: Text
+            name: 27b67d
+            widget: string
+          - hint: 'Original text: 8%, key: 6ed'
+            label: Text
+            name: 6ed
+            widget: string
+          - hint: 'Original text: 800,000, key: -19014944'
+            label: Text
+            name: '-19014944'
+            widget: string
+          - hint: 'Original text: 19 mo, key: 2ccee9a'
+            label: Text
+            name: 2ccee9a
+            widget: string
+          - hint: 'Original text: Treasury, key: 564f86e3'
+            label: Text
+            name: 564f86e3
+            widget: string
+          - hint: 'Original text: 9%, key: 70c'
+            label: Text
+            name: 70c
+            widget: string
+          - hint: 'Original text: 850,000, key: -10790e29'
+            label: Text
+            name: '-10790e29'
+            widget: string
+          - hint: 'Original text: 50,000, key: 5d29fb9f'
+            label: Text
+            name: 5d29fb9f
+            widget: string
+          - hint: 'Original text: n/a, key: 1a300'
+            label: Text
+            name: 1a300
+            widget: string
+          - hint: 'Original text: Advisors, key: -268b032d'
+            label: Text
+            name: '-268b032d'
+            widget: string
+          - hint: 'Original text: 6%, key: 6af'
+            label: Text
+            name: 6af
+            widget: string
+          - hint: 'Original text: 600,000, key: 7d32403a'
+            label: Text
+            name: 7d32403a
+            widget: string
+          - hint: 'Original text: 12 mo, key: 2c9c001'
+            label: Text
+            name: 2c9c001
+            widget: string
+          - hint: 'Original text: Early LP, key: -2c60907f'
+            label: Text
+            name: '-2c60907f'
+            widget: string
+          - hint: 'Original text: 900,000, key: 1be4f1fd'
+            label: Text
+            name: 1be4f1fd
+            widget: string
+          - hint: 'Original text: 500,000, key: 484c04f9'
+            label: Text
+            name: 484c04f9
+            widget: string
+          - hint: 'Original text: 6 mo, key: 1911cc'
+            label: Text
+            name: 1911cc
+            widget: string
+          - hint: 'Original text: Liquidity Providers, key: 70393b4'
+            label: Text
+            name: 70393b4
+            widget: string
+          - hint: 'Original text: 60%, key: d0ab'
+            label: Text
+            name: d0ab
+            widget: string
+          - hint: 'Original text: 6,000,000, key: 60effd3e'
+            label: Text
+            name: 60effd3e
+            widget: string
+          - hint: 'Original text: 0, key: 30'
+            label: Text
+            name: '30'
+            widget: string
+          - hint: 'Original text: Ecosystem Fund, key: 146caa25'
+            label: Text
+            name: 146caa25
+            widget: string
+          - hint: >-
+              Original text: This is some text inside of a div block., key:
+              7635fb4f
+            label: Text
+            name: 7635fb4f
+            widget: string
+          - hint: 'Original text: Total, key: 4d3eb24'
+            label: Text
+            name: 4d3eb24
+            widget: string
+          - hint: 'Original text: 100%, key: 170054'
+            label: Text
+            name: '170054'
+            widget: string
+          - hint: 'Original text: 10,000,000, key: -569bf5d9'
+            label: Text
+            name: '-569bf5d9'
+            widget: string
+          - hint: 'Original text: /, key: 2f'
+            label: Text
+            name: 2f
+            widget: string
+          - hint: 'Original text: 1,000,000,000, key: -666737c3'
+            label: Text
+            name: '-666737c3'
+            widget: string
+          - hint: 'Original text: Round Date, key: 6a914740'
+            label: Text
+            name: 6a914740
+            widget: string
+          - hint: 'Original text: Amount Raised, key: 4f76c0'
+            label: Text
+            name: 4f76c0
+            widget: string
+          - hint: 'Original text: 2, key: 32'
+            label: Text
+            name: '32'
+            widget: string
+          - hint: 'Original text: Overall progress:, key: -5b7f3886'
+            label: Text
+            name: '-5b7f3886'
+            widget: string
+          - hint: 'Original text: Phase I, key: 3ef732c4'
+            label: Text
+            name: 3ef732c4
+            widget: string
+          - hint: >-
+              Original text: In Q1 2022, The Wavelength team intends to launch
+              Linear Pools Integrated with the receipts of lenders of the
+              upcoming Amalgam lending platform., key: -1372ef86
+            label: Text
+            name: '-1372ef86'
+            widget: text
+          - hint: 'Original text: Error, key: 401e1e8'
+            label: Text
+            name: 401e1e8
+            widget: string
+          - hint: 'Original text: Linear Pools, key: -8d83ce4'
+            label: Text
+            name: '-8d83ce4'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. Duis
+              cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+              commodo diam libero vitae erat. Aenean faucibus nibh et justo
+              cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
+              tristique posuere., key: -5286fc08
+            label: Text
+            name: '-5286fc08'
+            widget: text
+          - hint: 'Original text: TBA, key: 14393'
+            label: Text
+            name: '14393'
+            widget: string
+          - hint: 'Original text: 75, key: 6de'
+            label: Text
+            name: 6de
+            widget: string
+          - hint: 'Original text: % done, key: 4115629d'
+            label: Text
+            name: 4115629d
+            widget: string
+          - hint: 'Original text: Error., key: 7c3a5b46'
+            label: Text
+            name: 7c3a5b46
+            widget: string
+          - hint: 'Original text: Phase II, key: -6010d9fb'
+            label: Text
+            name: '-6010d9fb'
+            widget: string
+          - hint: >-
+              Original text: In H1 2023, The Wavelength team aims to introduce
+              the ability to place limit orders on-chain via the Wavelength
+              protocol, as well as veWAVE, the platform's future governance
+              token., key: -7316200e
+            label: Text
+            name: '-7316200e'
+            widget: text
+          - hint: 'Original text: Governance (veWAVE), key: -21f41c9'
+            label: Text
+            name: '-21f41c9'
+            widget: string
+          - hint: >-
+              Original text: Governance Voting for Community Decisions will be
+              opened as a bi-weekly gauge voting for over 30% of total
+              emissions.The fee distribution system will have bonus yields in
+              bootstrapped VLX, BTC, and ETH for holders with large percentages
+              of governance tokens., key: 36a8f9c1
+            label: Text
+            name: 36a8f9c1
+            widget: text
+          - hint: 'Original text: Limit Orders, key: 69f5272a'
+            label: Text
+            name: 69f5272a
+            widget: string
+          - hint: >-
+              Original text: The implementation of Limit Orders will allow users
+              to set buy and sell orders on the WaveLength platform. The team
+              aims to improve UX for Wavelength users and thus further solidify
+              our user base., key: 3a5617e6
+            label: Text
+            name: 3a5617e6
+            widget: text
+          - hint: 'Original text: Phase III, key: 5df59ae4'
+            label: Text
+            name: 5df59ae4
+            widget: string
+          - hint: >-
+              Original text: In H2 2023, The Wavelength team aims to provide
+              Concentrated Liquidity Pools on the Wavelength platform, bringing
+              a more robust offering for traders and liquidity providers., key:
+              435b3840
+            label: Text
+            name: 435b3840
+            widget: text
+          - hint: 'Original text: Concentrated Liquidity Pools, key: -6505647d'
+            label: Text
+            name: '-6505647d'
+            widget: string
+          - hint: >-
+              Original text: Concentrated Liquidity Pools allow for lower
+              slippage for variable exchange rate token trading while allowing
+              users to choose which ranges they want to be exposed to
+              Impermanent Loss and collect higher yields when their LPs are
+              active and used for trading., key: -6634fecf
+            label: Text
+            name: '-6634fecf'
+            widget: text
+          - hint: 'Original text: H2 2023, key: 37ed5e75'
+            label: Text
+            name: 37ed5e75
+            widget: string
+          - hint: 'Original text: StableSwapV2, key: -718ec956'
+            label: Text
+            name: '-718ec956'
+            widget: string
+          - hint: >-
+              Original text: The team aims to overhaul the Wavelength stable
+              swap to improve its efficacy, enhancing capital efficiency by
+              reducing liquidity requirements for low slippage trading allowing
+              for greater utilization of the Wavelength pools., key: 24ed74c5
+            label: Text
+            name: 24ed74c5
+            widget: text
+          - hint: >-
+              Original text: Trade on any market, own your funds and exchanges —
+              , key: 726bbce1
+            label: Text
+            name: 726bbce1
+            widget: string
+          - hint: 'Original text: everytime, key: 907c068'
+            label: Text
+            name: 907c068
+            widget: string
+          - hint: 'Original text: Velas, key: 4eb706f'
+            label: Text
+            name: 4eb706f
+            widget: string
+          - hint: 'Original text: symbol, key: -34e68a68'
+            label: Text
+            name: '-34e68a68'
+            widget: string
+          - hint: 'Original text: $0.00, key: 211d2a2'
+            label: Text
+            name: 211d2a2
+            widget: string
+          - hint: 'Original text: last 24H, key: -57155a44'
+            label: Text
+            name: '-57155a44'
+            widget: string
+          - hint: 'Original text: 0.000%, key: 548762f3'
+            label: Text
+            name: 548762f3
+            widget: string
+          - hint: 'Original text: Ethereum, key: -50bf6be9'
+            label: Text
+            name: '-50bf6be9'
+            widget: string
+          - hint: 'Original text: $0,000.00, key: -3ff24062'
+            label: Text
+            name: '-3ff24062'
+            widget: string
+          - hint: 'Original text: Matic, key: 46aea5a'
+            label: Text
+            name: 46aea5a
+            widget: string
+          - hint: 'Original text: Solana, key: -6c0f019c'
+            label: Text
+            name: '-6c0f019c'
+            widget: string
+          - hint: 'Original text: $00.00, key: 4029630a'
+            label: Text
+            name: 4029630a
+            widget: string
+          - hint: 'Original text: Bitcoin, key: 5d1974fe'
+            label: Text
+            name: 5d1974fe
+            widget: string
+          - hint: 'Original text: $00,000.00, key: d96dc06'
+            label: Text
+            name: d96dc06
+            widget: string
+          - hint: 'Original text: Terms of Service, key: -7fe2d65b'
+            label: Text
+            name: '-7fe2d65b'
+            widget: string
+          - hint: 'Original text: Risk Disclosure Statement, key: 7e5e138d'
+            label: Text
+            name: 7e5e138d
+            widget: string
+          - hint: 'Original text: Legal Notice, key: 79a50a5f'
+            label: Text
+            name: 79a50a5f
+            widget: string
+          - hint: 'Original text: Privacy Notice, key: -4323f550'
+            label: Text
+            name: '-4323f550'
+            widget: string
+          - hint: 'Original text: Button Text, key: -8fb26a5'
+            label: Text
+            name: '-8fb26a5'
+            widget: string
+          - hint: 'Original text: Wavelength has a new Medium page, key: -17f7ba2c'
+            label: Text
+            name: '-17f7ba2c'
+            widget: string
+          - hint: 'Original text: Oct 15, 2022, key: 50cbc6b6'
+            label: Text
+            name: 50cbc6b6
+            widget: string
+          - hint: 'Original text: Wavelength has a new Twitter page, key: 63ca45e2'
+            label: Text
+            name: 63ca45e2
+            widget: string
+          - hint: >-
+              Original text: Wavelength has a new Telegram Community page, key:
+              552d4fff
+            label: Text
+            name: 552d4fff
+            widget: string
+          - hint: 'Original text: Wavelength has a new Discord page, key: 6e87ec9'
+            label: Text
+            name: 6e87ec9
+            widget: string
+          - hint: 'Original text: Wavelength, key: -4e6e34c1'
+            label: Text
+            name: '-4e6e34c1'
+            widget: string
+          - hint: >-
+              Original text: The most advanced AMM on Velas entirely community
+              owned and managed., key: 740a9409
+            label: Text
+            name: 740a9409
+            widget: string
+          - hint: 'Original text: Featured pools, key: -32ef2a7b'
+            label: Text
+            name: '-32ef2a7b'
+            widget: string
+          - hint: 'Original text: Popular pools, key: 5d485bb0'
+            label: Text
+            name: 5d485bb0
+            widget: string
+          - hint: 'Original text: Index Fund pools, key: -6bea4cf6'
+            label: Text
+            name: '-6bea4cf6'
+            widget: string
+          - hint: 'Original text: Phase 1 - Q4 ''22, key: 1567af51'
+            label: Text
+            name: 1567af51
+            widget: string
+          - hint: >-
+              Original text: The decentralized AMM, where users own their funds
+              and the exchange , key: -69c72328
+            label: Text
+            name: '-69c72328'
+            widget: string
+          - hint: 'Original text: itself, key: -463ab109'
+            label: Text
+            name: '-463ab109'
+            widget: string
+          - hint: 'Original text: BNB, key: 10176'
+            label: Text
+            name: '10176'
+            widget: string
+          - hint: 'Original text: Lockup, key: -7804deda'
+            label: Text
+            name: '-7804deda'
+            widget: string
+          - hint: 'Original text: FAQ, key: 10ef6'
+            label: Text
+            name: 10ef6
+            widget: string
+          - hint: 'Original text: All FAQs, key: 6b7c877c'
+            label: Text
+            name: 6b7c877c
+            widget: string
+          - hint: 'Original text: Partners, key: 4ab920cb'
+            label: Text
+            name: 4ab920cb
+            widget: string
+          - hint: 'Original text: Featured Partners, key: -212ecfa3'
+            label: Text
+            name: '-212ecfa3'
+            widget: string
+          - hint: 'Original text: Please scroll, key: 13340fa3'
+            label: Text
+            name: 13340fa3
+            widget: string
+          - hint: 'Original text: What is Wavelength?, key: 1bdeba6'
+            label: Text
+            name: 1bdeba6
+            widget: string
+          - hint: >-
+              Original text: Wavelength is a next-generation AMM (Automated
+              Market Maker) on the Velas Network, built on BalancerV2's
+              ingenious system. Wavelength allows for low-slippage trading
+              through highly efficient customizable liquidity pools aimed at
+              revolutionizing Defi on Velas and modernizing the ecosystem., key:
+              -ee1aada
+            label: Text
+            name: '-ee1aada'
+            widget: text
+          - hint: 'Original text: What are Automated Index Funds?, key: 7c4e8597'
+            label: Text
+            name: 7c4e8597
+            widget: string
+          - hint: >-
+              Original text: Our Automated Index Funds, otherwise known as
+              Weighted Pools, are Liquidity Pools that take in up to eight
+              tokens instead of the normal two. The Automated Index Funds have
+              set percentages that each asset should always represent.
+              Arbitrageurs are responsible for re-balancing the pools since
+              there are arbitrage opportunities whenever the pool is
+              unbalanced., key: -2dc981c2
+            label: Text
+            name: '-2dc981c2'
+            widget: text
+          - hint: 'Original text: Ooops, no items found., key: 3901bee5'
+            label: Text
+            name: 3901bee5
+            widget: string
+          - hint: 'Original text: What makes Wavelength different?, key: -185a0230'
+            label: Text
+            name: '-185a0230'
+            widget: string
+          - hint: >-
+              Original text: Wavelength is NOT a traditional AMM. We have an
+              array of features that separate us from traditional AMMs and other
+              protocols on the Velas chain. These include: Automated Index
+              Funds, Stable Pools and a Smart Order Router., key: -6ae4546f
+            label: Text
+            name: '-6ae4546f'
+            widget: text
+          - hint: >-
+              Original text: What is the Smart Order Router (SOR), key:
+              -1ad40f8a
+            label: Text
+            name: '-1ad40f8a'
+            widget: string
+          - hint: >-
+              Original text: The Smart Order Router is the automatic system of
+              routing orders that finds the best possible prices. It is what
+              allows Wavelength to offer its users a low slippage trading
+              experience even in scenarios of less-than-optimal liquidity
+              conditions., key: -2d7ad6d2
+            label: Text
+            name: '-2d7ad6d2'
+            widget: text
+          - hint: 'Original text: Leadership, key: -421bb11b'
+            label: Text
+            name: '-421bb11b'
+            widget: string
+          - hint: 'Original text: POPULAR, key: 13507eb9'
+            label: Text
+            name: 13507eb9
+            widget: string
+          - hint: 'Original text: 0.00%, key: 2ba0b67'
+            label: Text
+            name: 2ba0b67
+            widget: string
+          - hint: 'Original text: Stable Trio, key: -170c3e17'
+            label: Text
+            name: '-170c3e17'
+            widget: string
+          - hint: 'Original text: Velonian, key: -7cea6146'
+            label: Text
+            name: '-7cea6146'
+            widget: string
+          - hint: 'Original text: popular, key: -177b0d27'
+            label: Text
+            name: '-177b0d27'
+            widget: string
+          - hint: 'Original text: Quad Core, key: 1b54c6d8'
+            label: Text
+            name: 1b54c6d8
+            widget: string
+          - hint: 'Original text: index, key: 5fb28d2'
+            label: Text
+            name: 5fb28d2
+            widget: string
+          - hint: 'Original text: EVM Quarter, key: 51176828'
+            label: Text
+            name: '51176828'
+            widget: string
+          - hint: 'Original text: Featured Partner, key: 17b42ad6'
+            label: Text
+            name: 17b42ad6
+            widget: string
+          - hint: 'Original text: How do I bridge to Velas?, key: -11671026'
+            label: Text
+            name: '-11671026'
+            widget: string
+          - hint: >-
+              Original text: You can obtain VLX on BSC through AMMs like
+              PancakeSwap, but how do you get it to Velas Chain?, key: 187f27b1
+            label: Text
+            name: 187f27b1
+            widget: text
+          - hint: >-
+              Original text: How do I get my first gas fee? (faucet), key:
+              1a6f3ab
+            label: Text
+            name: 1a6f3ab
+            widget: string
+          - hint: >-
+              Original text: I have no gas fee! HELP! After you bridge to Velas,
+              you will need some VLX gas to perform transactions on the network.
+              Velas has you covered! You can use some free VLX gas to swap
+              tokens for more VLX for gas. Here’s how you get it : 1- Go to
+              https://stakely.io/en/faucet/velas-vlx 2- Follow the directions on
+              the website. 3- Once you've received the small amount of gas, go
+              to the Swap page on wavelength to swap for more VLX so you won't
+              run out of gas., key: 3e23de3a
+            label: Text
+            name: 3e23de3a
+            widget: text
+          - hint: >-
+              Original text: How do I migrate from the old wrapped assets to the
+              new Multichain wrapped assets?, key: -58082238
+            label: Text
+            name: '-58082238'
+            widget: string
+          - hint: >-
+              Original text: Neither Velas, nor Multichain will offer any
+              migration services for wrapped assets . If you happen to own
+              wrapped assets on Vela's chain that were NOT ISSUED by Multichain
+              and you wish to use Wavelength, you must either: 1) Bridge other
+              assets from different networks via Multichain; 2) Bridge your
+              wrapped assets back to the original networks and then rebridge to
+              Velas via Multichain bridge., key: -76f07c01
+            label: Text
+            name: '-76f07c01'
+            widget: text
+          - hint: >-
+              Original text: What are the ways to acquire Wave Token?, key:
+              170ddb03
+            label: Text
+            name: 170ddb03
+            widget: string
+          - hint: >-
+              Original text: There are 2 ways to acquire Wave Tokens: 1- You can
+              buy Wave tokens from liquidity pools. 2- You can provide liquidity
+              to any incentivized liquidity pool and you will earn Wave Tokens
+              as rewards., key: 4722a04a
+            label: Text
+            name: 4722a04a
+            widget: text
+          - hint: >-
+              Original text: How can I stake liquidity in Wave Farms?, key:
+              20217e39
+            label: Text
+            name: '20217e39'
+            widget: string
+          - hint: >-
+              Original text: If you are providing liquidity for any incentivized
+              Liquidity Pool you will have the option to Stake your Lp’s for
+              rewards in Wave Tokens. Community Pools can’t be staked for Wave
+              Rewards, it will only get rewards from swaps as underlying tokens
+              in the LP., key: -2f231e9f
+            label: Text
+            name: '-2f231e9f'
+            widget: text
+          - hint: 'Original text: How do I create a custom pool?, key: 4954d3fb'
+            label: Text
+            name: 4954d3fb
+            widget: string
+          - hint: >-
+              Original text: Wavelength pools are permission-less, meaning
+              anyone can create a liquidity pool with any token and %’s (per
+              ex:60%vlx-40%usdc or 90%vlx-10%usdc), allowing users to choose how
+              much exposure to tokens they want when providing liquidity. To
+              create a pool, you need to go to the Wavelength website => invest
+              => Compose a pool., key: -59c754e0
+            label: Text
+            name: '-59c754e0'
+            widget: text
+          - hint: 'Original text: How can I swap tokens on Wavelength?, key: 1ce17f0f'
+            label: Text
+            name: 1ce17f0f
+            widget: string
+          - hint: >-
+              Original text: Swapping tokens on Wavelength is a very similar
+              experience to that of other protocols alike. In other words, it is
+              effortless. If you have never used an AMM Dex, follow the steps:
+              Connect your desktop or mobile wallet to Wavelength by clicking on
+              the “Connect Wallet” on the top right button; Select the two
+              assets you want to swap. On top is the one you are selling, and on
+              the bottom is the buying one; Input the amount you wish to buy;
+              Check the slippage and the minimum received of the token you’re
+              buying. The less slippage you suffer, the more you will receive;
+              Click the “swap” button on the bottom of the swap interface; Make
+              sure to have enough $VLX in your wallet to pay the gas fee and
+              sign the transaction. Now just wait a couple of seconds for your
+              transaction to be confirmed (your wallet should notify you); And
+              that is it! Your swap is successful!, key: -45352f98
+            label: Text
+            name: '-45352f98'
+            widget: text
+          - hint: >-
+              Original text: What is the role of Wavelength in the DeFi
+              ecosystem of Velas?, key: -7a9a4192
+            label: Text
+            name: '-7a9a4192'
+            widget: string
+          - hint: >-
+              Original text: Aimed at being a flagship in the rebirth of a DeFi
+              ecosystem, Wavelength has been designed and built to be the
+              liquidity-hub of Vela's blockchain. Wavelength will act as the
+              core piece for both users and developers. Users enjoy a variety of
+              products, such as AMM trading with maximum liquidity, low
+              slippage, and an array of liquidity provision opportunities.
+              Developer teams can leverage our pools to build protocols such as
+              Liquidity Mining, Lending, and Borrowing, Yield Aggregators, etc.
+              Wavelength will also invest in and support teams building on Velas
+              as part of the Velas DeFi Incubation Program and the Partnership
+              Incentive Program. These efforts are aimed at promoting and
+              accelerating the growth of Velas’ DeFi ecosystem., key: -3ab7e6ce
+            label: Text
+            name: '-3ab7e6ce'
+            widget: text
+          - hint: >-
+              Original text: Who are the relevant parties to creating the
+              Wavelength Protocol?, key: -1e355ca7
+            label: Text
+            name: '-1e355ca7'
+            widget: string
+          - hint: >-
+              Original text: There are three relevant parties to consider when
+              discussing the deployment of the Wavelength Protocol, its
+              maintenance and its positioning. The Velas Defi Incubation Team,
+              which funded the initiative and aided in strategic decisions and
+              acquisitions, the developer Team, who built the project and is
+              responsible for maintaining it, and Velas itself, which directly
+              contributed resources and facilitated a successful launch. Each of
+              these counterparties has voting power in strategic decisions made
+              by the Wavelength DAO that said protocol-specific decisions are
+              the responsibility of the development team and Incubation Team,
+              both counterparties represented in the Treasury multi-sig wallet.
+              While ecosystem-focused, decisions will be voted on by all
+              counterparties represented in the Velas Ecosystem Fund., key:
+              -7a4ab5ca
+            label: Text
+            name: '-7a4ab5ca'
+            widget: text
+          - hint: >-
+              Original text: What is Wavelength’s relationship with Velas?, key:
+              -4e60c511
+            label: Text
+            name: '-4e60c511'
+            widget: string
+          - hint: >-
+              Original text: Wavelength’s goal is to Rebuild the Velas Defi
+              Ecosystem and advance the chain’s potential by being the bedrock
+              for innovation and utilization of the chain. It is an
+              ecosystem-first AMM designed for the sole purpose of revamping
+              Velas Defi. As such, Wavelength enjoys direct support from the
+              chain in achieving our mutual goal of growing Velas to new
+              heights., key: -44a53e2f
+            label: Text
+            name: '-44a53e2f'
+            widget: text
+          - hint: >-
+              Original text: What are the uses intended for the tokens allocated
+              to the treasury?, key: 296a9e9
+            label: Text
+            name: 296a9e9
+            widget: string
+          - hint: >-
+              Original text: Funds allocated to the treasury will be used for
+              marketing, partnerships of all kinds, developer grants building on
+              top of Wavelength, protocol maintenance, or WAVE Protocol Owned
+              Liquidity. The treasury will never use $WAVE tokens for any reason
+              apart from the ones mentioned before., key: -645aadc9
+            label: Text
+            name: '-645aadc9'
+            widget: text
+          - hint: 'Original text: Who is the team behind Wavelength?, key: -1393c646'
+            label: Text
+            name: '-1393c646'
+            widget: string
+          - hint: >-
+              Original text: The Wavelength developer team, is a multi-faceted
+              group of committed individuals with extensive experience in
+              developing, maintaining, and managing Web3 based businesses., key:
+              -3d2cf133
+            label: Text
+            name: '-3d2cf133'
+            widget: text
+          - hint: 'Original text: Is Wavelength audited?, key: -67dbce50'
+            label: Text
+            name: '-67dbce50'
+            widget: string
+          - hint: >-
+              Original text: Yes! Chainsulting, a well-known company in Web3
+              cybersecurity, audited Wavelength’s code. Our contracts are safe
+              for you to interact with., key: 61683a7f
+            label: Text
+            name: 61683a7f
+            widget: text
+          - hint: >-
+              Original text: What is the relationship between Wavelength and
+              Multichain?, key: -6067c69c
+            label: Text
+            name: '-6067c69c'
+            widget: string
+          - hint: >-
+              Original text: Multichain is our Official Liquidity Partner!
+              Wavelength is the liquidity host for Multichain wrapped assets
+              on-chain., key: -66ab2eb6
+            label: Text
+            name: '-66ab2eb6'
+            widget: text
+          - hint: >-
+              Original text: What features differentiate Wavelength from
+              traditional Automated Market Makers?, key: -70f0a6d1
+            label: Text
+            name: '-70f0a6d1'
+            widget: string
+          - hint: >-
+              Original text: Wavelength is NOT a traditional AMM. We have an
+              array of features that separate us from conventional AMMs and
+              other protocols on Velas. These include: Automated Index Funds;
+              Stable Pools; Smart Order Router, key: -77c00dfe
+            label: Text
+            name: '-77c00dfe'
+            widget: text
+          - hint: >-
+              Original text: How do I provide liquidity to Wavelength Pools?,
+              key: -6e0b2473
+            label: Text
+            name: '-6e0b2473'
+            widget: string
+          - hint: >-
+              Original text: In the Wavelength website go to the Invest section
+              and you will see the list of incentivized pools. You can provide
+              liquidity by depositing any of the assets of the liquidity pool or
+              several tokens presents in the pool. You can also withdraw for the
+              several tokens of the pool or to a single asset of the pool of
+              your choice., key: 47e9990d
+            label: Text
+            name: 47e9990d
+            widget: text
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. , key:
+              -7d05bb15
+            label: Text
+            name: '-7d05bb15'
+            widget: text
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: https://app.wavelength.exchange/, key: -170bc227'
+            label: Link
+            name: '-170bc227'
+            widget: string
+          - hint: >-
+              Original link: https://www.coingecko.com/en/coins/velas, key:
+              4175f826
+            label: Link
+            name: 4175f826
+            widget: string
+          - hint: >-
+              Original link: https://www.coingecko.com/en/coins/ethereum, key:
+              -13d82300
+            label: Link
+            name: '-13d82300'
+            widget: string
+          - hint: >-
+              Original link: https://www.coingecko.com/en/coins/polygon, key:
+              -70719cef
+            label: Link
+            name: '-70719cef'
+            widget: string
+          - hint: >-
+              Original link: https://www.coingecko.com/en/coins/solana, key:
+              -17489273
+            label: Link
+            name: '-17489273'
+            widget: string
+          - hint: >-
+              Original link: https://www.coingecko.com/en/coins/bitcoin, key:
+              -5edf150b
+            label: Link
+            name: '-5edf150b'
+            widget: string
+          - hint: 'Original link: https://t.me/WavelengthDAO, key: 5a85f6e5'
+            label: Link
+            name: 5a85f6e5
+            widget: string
+          - hint: 'Original link: https://twitter.com/Wavelength_DAO, key: -5e3c5dd6'
+            label: Link
+            name: '-5e3c5dd6'
+            widget: string
+          - hint: >-
+              Original link: https://discord.com/invite/qcVxqsG7hB, key:
+              -770d29b9
+            label: Link
+            name: '-770d29b9'
+            widget: string
+          - hint: 'Original link: https://medium.com/@Wavelength_DAO, key: 119b743a'
+            label: Link
+            name: 119b743a
+            widget: string
+          - hint: >-
+              Original link: https://wavelength.gitbook.io/wavelength/, key:
+              277480da
+            label: Link
+            name: 277480da
+            widget: string
+          - hint: >-
+              Original link:
+              https://pdfhost.io/v/MsL2IWXF4_Wavelength_Terms_of_Service_draft_shared,
+              key: 1520142f
+            label: Link
+            name: 1520142f
+            widget: string
+          - hint: >-
+              Original link:
+              https://pdfhost.io/v/8VCEQVBqu_Wavelength_Risk_Disclosure_Statement_draft_shared,
+              key: -567e4ae8
+            label: Link
+            name: '-567e4ae8'
+            widget: string
+          - hint: >-
+              Original link:
+              https://pdfhost.io/v/W4jjxVI0u_Wavelength_Legal_Notice_draft_shared,
+              key: 301da3af
+            label: Link
+            name: 301da3af
+            widget: string
+          - hint: >-
+              Original link:
+              https://pdfhost.io/v/CjN7vXVli_Wavelength_Privacy_Notice_draft_shared,
+              key: -3c321970
+            label: Link
+            name: '-3c321970'
+            widget: string
+          - hint: 'Original link: #roadmap, key: -7ac08b47'
+            label: Link
+            name: '-7ac08b47'
+            widget: string
+          - hint: 'Original link: #tokenomics, key: 622f5e05'
+            label: Link
+            name: 622f5e05
+            widget: string
+          - hint: 'Original link: /faqs, key: 2c628cc'
+            label: Link
+            name: 2c628cc
+            widget: string
+          - hint: 'Original link: https://www.wavelength.exchange/, key: 4619d023'
+            label: Link
+            name: 4619d023
+            widget: string
+          - hint: 'Original link: https://multichain.org/, key: 762c8022'
+            label: Link
+            name: 762c8022
+            widget: string
+          - hint: 'Original link: https://occam.fi/, key: 2c88feea'
+            label: Link
+            name: 2c88feea
+            widget: string
+          - hint: 'Original link: https://www.coingecko.com/, key: 74016dca'
+            label: Link
+            name: 74016dca
+            widget: string
+          - hint: 'Original link: /static/faqs-static, key: 2d505e6c'
+            label: Link
+            name: 2d505e6c
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 4c46c763
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6d767fc4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-39d93d2c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-25637283'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5069ebe1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: aa06602
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-775128e8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-28753374'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 48b4f4a9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: c568081
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-33009b86'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 73d96805
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 53c40d73
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5010bf84
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 63d3600f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1af59d11
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-54d911b8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3e167b83'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-26a53862'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4d78ed8d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '748e9386'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 77e2a107
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1d9d3980'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6396a567'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4d6e7ae0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: ec0e02a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2b910159
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 37db5b8a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '71740e28'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
