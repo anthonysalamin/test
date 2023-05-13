@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96.119 87.98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4eb8e4;
+      }
+
+      .cls-1, .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #093c7f;
+      }
+
+      .cls-4 {
+        fill: #1e862c;
+      }
+
+      .cls-5 {
+        fill: #e2c31d;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_218" data-name="Ellipse 218" cx="43.99" cy="43.99" r="43.99"/>
+    </clipPath>
+  </defs>
+  <g id="Group_1668" data-name="Group 1668" transform="translate(-0.034 0)">
+    <path id="Path_1207" data-name="Path 1207" class="cls-1" d="M55.115,140.831c-1.187,1.8-14.471-4.973-29.648-15.081S-1.068,105.985.12,104.188s14.471,4.973,29.648,15.081c15.177,10.139,26.535,19.8,25.348,21.562" transform="translate(0 -70.562)"/>
+    <path id="Path_1208" data-name="Path 1208" class="cls-1" d="M61.686,69.048c-.289.449-2.021-.16-3.882-1.412-1.829-1.219-3.08-2.567-2.792-3.048.289-.449,2.021.16,3.882,1.412,1.829,1.219,3.08,2.6,2.792,3.048" transform="translate(-37.309 -43.765)"/>
+    <path id="Path_1209" data-name="Path 1209" class="cls-1" d="M23.732,84.008c-.513.77-3.465-.289-6.578-2.374s-5.23-4.4-4.717-5.166,3.465.289,6.578,2.374,5.23,4.4,4.717,5.166" transform="translate(-8.371 -51.762)"/>
+    <path id="Path_1210" data-name="Path 1210" class="cls-1" d="M73.277,104.893a2.231,2.231,0,0,1-2.439,1.893,2.208,2.208,0,0,1-2.439-1.893A2.231,2.231,0,0,1,70.839,103a2.255,2.255,0,0,1,2.439,1.893" transform="translate(-46.43 -69.951)"/>
+    <path id="Path_1211" data-name="Path 1211" class="cls-1" d="M13.488,185.256c-.578,1.091-2.984.963-5.423-.289s-3.947-3.144-3.4-4.235c.578-1.091,2.984-.963,5.423.289s3.979,3.144,3.4,4.235" transform="translate(-3.068 -122.239)"/>
+    <g id="Group_1667" data-name="Group 1667" transform="translate(8.173 0)">
+      <g id="Group_1662" data-name="Group 1662" class="cls-2" transform="translate(0 0)">
+        <path id="Path_1212" data-name="Path 1212" class="cls-3" d="M9.2,1.2H115.213V85.266Z" transform="translate(-14.398 -0.815)"/>
+      </g>
+      <g id="Group_1663" data-name="Group 1663" class="cls-2" transform="translate(0 0)">
+        <path id="Path_1213" data-name="Path 1213" class="cls-4" d="M172.9,42.655,226.388,1.2V85.266Z" transform="translate(-125.573 -0.815)"/>
+      </g>
+      <g id="Group_1664" data-name="Group 1664" class="cls-2" transform="translate(0 0)">
+        <path id="Path_1214" data-name="Path 1214" class="cls-4" d="M141.139,168.8l-36.771-29.648s-2.888,4.845-6.321,2.471c0,0-1.893-1.476-.738-6.064a20.15,20.15,0,0,1,4.685-7.316s2.535-2.118,4.171.417c0,0,1.8,2.118.1,6.738l41.2,33.562Z" transform="translate(-73.983 -86.534)"/>
+      </g>
+      <g id="Group_1665" data-name="Group 1665" class="cls-2" transform="translate(0 0)">
+        <path id="Path_1215" data-name="Path 1215" class="cls-5" d="M106.6,139.814c-1.572,2.888-3.85,4.652-5.07,3.979s-.9-3.529.674-6.417,3.85-4.653,5.07-3.979.9,3.562-.674,6.417" transform="translate(-76.597 -90.497)"/>
+      </g>
+      <g id="Group_1666" data-name="Group 1666" class="cls-2" transform="translate(0 0)">
+        <path id="Path_1216" data-name="Path 1216" class="cls-4" d="M93,132.868c-.321.385-2.6-.995-5.07-3.112-2.471-2.086-4.235-4.107-3.915-4.492s2.6.995,5.07,3.112,4.235,4.107,3.915,4.492" transform="translate(-65.186 -85.028)"/>
+      </g>
+    </g>
+  </g>
+</svg>
