@@ -191,10 +191,10 @@ collections:
           - label: Index
             value: Index
       - hint: >-
-          Please use this format (as example):
+          Pool ID - Please use this format (as example):
           0x0000000000000000000000000000000000000000000000000000000000000000
         name: f_id-of-the-pool
-        label: id of the pool
+        label: Identification
         widget: string
         required: false
       - hint: ''
