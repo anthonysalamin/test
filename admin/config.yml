@@ -194,7 +194,7 @@ collections:
           Pool ID - Please use this format (as example):
           0x0000000000000000000000000000000000000000000000000000000000000000
         name: f_id-of-the-pool
-        label: Identification
+        label: Pool ID
         widget: string
         required: false
       - hint: ''

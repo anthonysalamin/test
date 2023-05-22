@@ -358,7 +358,8 @@ animation-play-state: paused;
           {%- unless collection.length == 0 -%}<div role="list" class="pool__collection-list w-dyn-items w-row">
             {%- for item in collection -%}<div role="listitem" class="pool__collection-item w-dyn-item w-col w-col-4">
               <div data-pool-id="" class="pool__item-wrap">
-                <div data-pool-name="" class="pool__title">{{ texts.1410e13c }}</div>
+                <div data-pool-name="" class="pool__name">{{ texts.1410e13c }}</div>
+                <div class="pool__id">{{ item.data.f_id-of-the-pool }}</div>
                 <div class="pool__wrap-token">{%- if item.data.f_token-thumbnail-1 -%}<img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;40px&quot;}]" src="{{ item.data.f_token-thumbnail-1.url }}" alt="{{ item.data.f_token-thumbnail-1.alt }}" class="pool__token pool__token--z5">{%- endif -%}{%- if item.data.f_token-thumbnail-2 -%}<img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;40px&quot;}]" src="{{ item.data.f_token-thumbnail-2.url }}" alt="{{ item.data.f_token-thumbnail-2.alt }}" class="pool__token pool__token--z4">{%- endif -%}{%- if item.data.f_token-thumbnail-3 -%}<img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;100vw&quot;}]" src="{{ item.data.f_token-thumbnail-3.url }}" alt="{{ item.data.f_token-thumbnail-3.alt }}" class="pool__token pool__token--z3">{%- endif -%}{%- if item.data.f_token-thumbnail-4 -%}<img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;100vw&quot;}]" src="{{ item.data.f_token-thumbnail-4.url }}" alt="{{ item.data.f_token-thumbnail-4.alt }}" class="pool__token pool__token--z2">{%- endif -%}{%- if item.data.f_token-thumbnail-5 -%}<img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;100vw&quot;}]" src="{{ item.data.f_token-thumbnail-5.url }}" alt="{{ item.data.f_token-thumbnail-5.alt }}" class="pool__token z-1">{%- endif -%}</div>
                 <div class="pool__label" style="background-color: {{item.data.f_color}};; color: {{item.data.f_label-text-color}};">{{ item.data.f_category }}</div>
                 <div class="pool__wrap-apr">
@@ -366,7 +367,7 @@ animation-play-state: paused;
                     <div data-pool-apr="" class="pool__text-apr-yearly">{{ item.data.f_apr }}</div><img src="{{ images.-3e167b83.url }}" loading="lazy" alt="{{ images.-3e167b83.alt | trim | escape }}" class="pool_img-star">
                   </div>
                   <div class="pool__wrap-apr-daily">
-                    <div data-pool-daily="" class="pool__legend">{{ item.data.f_apr-daily }}</div>
+                    <div data-pool-daily="" class="pool__text-apr-daily">{{ item.data.f_apr-daily }}</div>
                     <div class="pool__legend padding-left">{{ texts.3ebedf9 }}</div>
                   </div>
                 </div>
@@ -1297,9 +1298,9 @@ document.addEventListener("DOMContentLoaded",()=>{const production=true;const pa
 </script>
   <script>
 /*
- * APR GraphQL querry v.5
- * Last build 29.10.22 @ 02:35
- * new build 02.05.23 @21:14
+ * APR GraphQL querry v.7
+ * TO DO: use WF api to get data
+ * Build 22.05.23 @ 21:44
  */
 // console.clear();
 document.addEventListener("DOMContentLoaded", () => {
@@ -1311,9 +1312,9 @@ document.addEventListener("DOMContentLoaded", () => {
 async function getAPR() {
   // console.time("getAPR");
   // globals
-  const name_element = document.querySelector(`[data-pool-name]`),
-    apr_element = document.querySelector(`[data-pool-apr]`),
-    daily_element = document.querySelector(`[data-pool-daily]`),
+  const name_element = document.querySelector(`.pool__name`),
+    apr_element = document.querySelector(`.pool__text-apr-yearly`),
+    daily_element = document.querySelector(`.pool__text-apr-daily`),
     cards = document.querySelectorAll(`.pool__item-wrap`);
   const url = `https://teste.testeborabora.cyou/graphql`,
     headers = { "Content-Type": "application/json" },
@@ -1332,7 +1333,7 @@ async function getAPR() {
     //////////////////////////////////////////////////////////////////
     let poolIDs = [];
     Array.from(cards).forEach((card) => {
-      const id = card.getAttribute("data-pool-id");
+      const id = card.querySelector(".pool__id").textContent;
       poolIDs.push(id);
     });
     //////////////////////////////////////////////////////////////////
@@ -1374,7 +1375,7 @@ async function getAPR() {
         } // end if
       } // end for ids
     } // end for allPools
-    // console.log(unorderedPools);
+    console.log(unorderedPools);
     // helper sort array in ascending order
     function sort(array) {
       return array.sort((a, b) => {
@@ -1395,9 +1396,9 @@ async function getAPR() {
         apr = formatAPR(featuredPool.apr.total, 1), // per year
         daily = formatAPR(featuredPool.apr.total, 365); // per day day
       // injecting data
-      card.querySelector(`[data-pool-name]`).textContent = name;
-      card.querySelector(`[data-pool-apr]`).textContent = `${apr}%`;
-      card.querySelector(`[data-pool-daily]`).textContent = `${daily}%`;
+      card.querySelector(`.pool__name`).textContent = name;
+      card.querySelector(`.pool__text-apr-yearly`).textContent = `${apr}%`;
+      card.querySelector(`.pool__text-apr-daily`).textContent = `${daily}%`;
     }
     // handling error
   } catch (error) {
