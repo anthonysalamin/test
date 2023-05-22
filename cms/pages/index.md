@@ -6,33 +6,21 @@ slug: ''
 tags: pages
 seo:
   noindex: false
-  title: Web designer, Web developer & Graphic Designer based in Berlin Germany
+  title: Wavelength DEX
   description: >-
-    Anthony Salamin is a swiss freelance UI/UX designer and frontend developer.
-    Specializing in creating visually stunning and user-friendly digital
-    experiences, Anthony has a strong understanding of design principles and a
-    keen eye for detail. Corporate Identity, webdesign or photography, Anthony
-    offers complete solutions for your business - get in touch to discuss your
-    next project.
-  og:title: Web designer, Web developer & Graphic Designer based in Berlin Germany
+    We're proud to be introducing Wavelength, the first next-generation AMM DEX
+    inside Velas Blockchain.
+  og:title: Wavelength DAO
   additional_tags: >-
-    <meta content="Anthony Salamin is a swiss freelance UI/UX designer and
-    frontend developer. Specializing in creating visually stunning and
-    user-friendly digital experiences, Anthony has a strong understanding of
-    design principles and a keen eye for detail. Corporate Identity, webdesign
-    or photography, Anthony offers complete solutions for your business - get in
-    touch to discuss your next project." property="og:description"><meta
-    content="Anthony Salamin is a swiss freelance UI/UX designer and frontend
-    developer. Specializing in creating visually stunning and user-friendly
-    digital experiences, Anthony has a strong understanding of design principles
-    and a keen eye for detail. Corporate Identity, webdesign or photography,
-    Anthony offers complete solutions for your business - get in touch to
-    discuss your next project." property="twitter:description"><meta
-    content="https://uploads-ssl.webflow.com/5b05ed948ee27f736bbe9315/5c12749ebcb241822bc6c757_open-graph.jpg"
+    <meta content="Introducing Wavelength, the first next-generation AMM DEX
+    inside Velas Blockchain." property="og:description"><meta
+    content="Introducing Wavelength, the first next-generation AMM DEX inside
+    Velas Blockchain." property="twitter:description"><meta
+    content="https://uploads-ssl.webflow.com/61a0f086f2b1f289503a4957/634ab07f8246d866671cf0c6_open-graph-image.jpg"
     property="twitter:image"><meta property="og:type" content="website">
   og:image: >-
-    https://uploads-ssl.webflow.com/5b05ed948ee27f736bbe9315/5c12749ebcb241822bc6c757_open-graph.jpg
-  twitter:title: Web designer, Web developer & Graphic Designer based in Berlin Germany
+    https://uploads-ssl.webflow.com/61a0f086f2b1f289503a4957/634ab07f8246d866671cf0c6_open-graph-image.jpg
+  twitter:title: Wavelength DAO
 ---
 
 
