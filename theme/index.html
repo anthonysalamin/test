@@ -16,7 +16,7 @@
 <body>
   <section class="section wf-section">
     <div class="w-form">
-      <form id="form-question" name="wf-form-Form" data-name="" action="https://usebasin.com/f/5dad027f49fc" method="post" data-wf-page-id="64885e45a3922c655fefe54a" data-wf-element-id="36e16195-1181-4ec8-497b-782fd357ee7c" data-ajax="true"><label for="name">{{ texts.24eeab }}</label><input type="text" class="w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"><label for="email-question">{{ texts.-2b7010d0 }}</label><input type="email" class="w-input" maxlength="256" name="email" data-name="Email" placeholder="" id="email-question" required=""><input type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
+      <form id="form-question" name="wf-form-Form" data-name="" action="https://usebasin.com/f/d6fe507362a9" method="post" data-wf-page-id="64885e45a3922c655fefe54a" data-wf-element-id="36e16195-1181-4ec8-497b-782fd357ee7c" data-ajax="true"><label for="name">{{ texts.24eeab }}</label><input type="text" class="w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"><label for="email-question">{{ texts.-2b7010d0 }}</label><input type="email" class="w-input" maxlength="256" name="email" data-name="Email" placeholder="" id="email-question" required=""><input type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
       <div id="success-message-question" class="w-form-done">
         <div>{{ texts.5a0ea5a1 }}</div>
       </div>
@@ -29,7 +29,8 @@
   <script src="/assets/js/webflow.js" type="text/javascript"></script>
   <script>
 /*
- * usebasin x webflow
+ * form | webflow x usebasin x netlify
+ * using usebasin duplicate action URL hack
  * build 13.06.23 @16:11
  */
 var Webflow = Webflow || [];
@@ -60,7 +61,7 @@ Webflow.push(function () {
     const emailValue = document.getElementById(`email-${formID}`).value;
     const formData = new FormData(event.target);
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", event.srcElement.action);
+    xhr.open("POST", "https://usebasin.com/f/5dad027f49fc");
     xhr.send(formData);
     // capture xhr response
     xhr.onload = function () {
