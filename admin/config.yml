@@ -366,9 +366,15 @@ collections:
             label: Text
             name: '-4c26e57f'
             widget: text
-          - hint: 'Original text: Thank you !, key: 4343178a'
+          - hint: >-
+              Original text: Thank you, your message has been sent!, key:
+              33e8f484
             label: Text
-            name: 4343178a
+            name: 33e8f484
+            widget: string
+          - hint: 'Original text: Go back, key: 6b3550ff'
+            label: Text
+            name: 6b3550ff
             widget: string
           - hint: 'Original text: Something went wrong, try again., key: 2fff9fee'
             label: Text
@@ -484,6 +490,10 @@ collections:
           - hint: 'Original text: 03, key: 603'
             label: Text
             name: '603'
+            widget: string
+          - hint: 'Original text: Thank you !, key: 4343178a'
+            label: Text
+            name: 4343178a
             widget: string
           - hint: 'Original text: What’s a Rich Text element?, key: -3c0dda4d'
             label: Text
