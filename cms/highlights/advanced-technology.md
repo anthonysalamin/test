@@ -11,7 +11,7 @@ title: Advanced Technology
 slug: advanced-technology
 updated-on: '2023-06-17T15:42:30.034Z'
 created-on: '2023-06-17T15:42:30.034Z'
-published-on: '2023-06-17T16:38:03.935Z'
+published-on: '2023-06-20T11:31:54.476Z'
 layout: '[highlights].html'
 tags: highlights
 ---

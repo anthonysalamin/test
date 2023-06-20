@@ -449,6 +449,10 @@ collections:
             name: title
             widget: hidden
             default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
@@ -488,19 +492,6 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 2359efcb
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
             name: '-e71017d'
             widget: object
             fields:
@@ -515,6 +506,19 @@ collections:
                 required: false
           - label: Image
             name: '-7301b384'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2359efcb
             widget: object
             fields:
               - name: url
