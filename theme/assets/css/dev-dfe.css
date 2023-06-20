@@ -192,17 +192,17 @@ p, li {
 }
 
 .punchline {
-  max-width: 60vw;
+  max-width: 53vw;
   padding-bottom: 80px;
-  font-size: 4.5vw;
-  line-height: 4.5vw;
+  font-size: 4vw;
+  line-height: 4vw;
   position: relative;
 }
 
 .sticky {
   padding-right: 24px;
-  font-size: 4.5vw;
-  line-height: 4.5vw;
+  font-size: 4vw;
+  line-height: 4vw;
   position: -webkit-sticky;
   position: sticky;
   top: 360px;
