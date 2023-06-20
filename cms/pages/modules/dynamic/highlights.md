@@ -1,7 +1,7 @@
 ---
 title: Highlights
-permalink: dynamic/{{ page.fileSlug }}/index.html
-layout: dynamic/highlights.html
+permalink: modules/dynamic/{{ page.fileSlug }}/index.html
+layout: modules/dynamic/highlights.html
 slug: highlights
 tags: pages
 seo:

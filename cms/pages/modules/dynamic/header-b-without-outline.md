@@ -1,7 +1,7 @@
 ---
 title: Header B (without outline)
-permalink: dynamic/{{ page.fileSlug }}/index.html
-layout: dynamic/header-b-without-outline.html
+permalink: modules/dynamic/{{ page.fileSlug }}/index.html
+layout: modules/dynamic/header-b-without-outline.html
 slug: header-b-without-outline
 tags: pages
 seo:
