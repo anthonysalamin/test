@@ -6,7 +6,18 @@ slug: ''
 tags: pages
 seo:
   noindex: false
-  title: Usebasin
+  title: DF Enterprises LLC
+  description: >-
+    Using Artificial Intelligence to study cognitive phenomena of market
+    participants.
+  og:title: DF Enterprises LLC
+  additional_tags: >-
+    <meta content="Using Artificial Intelligence to study cognitive phenomena of
+    market participants." property="og:description"><meta content="Using
+    Artificial Intelligence to study cognitive phenomena of market
+    participants." property="twitter:description"><meta property="og:type"
+    content="website">
+  twitter:title: DF Enterprises LLC
 ---
 
 
