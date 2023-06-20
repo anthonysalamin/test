@@ -461,6 +461,7 @@ p {
 }
 
 .wrap-nav {
+  z-index: 888;
   width: 100%;
   height: auto;
   justify-content: space-between;
@@ -877,9 +878,14 @@ p {
     margin-right: 0;
   }
 
+  .cta-round.absolute {
+    top: -40px;
+    right: 0;
+  }
+
   .form-inscription-wrapper {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   .form-field::-ms-input-placeholder {

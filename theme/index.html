@@ -291,7 +291,8 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
-  measureHeight();
+  // measureHeight();
+  setTimeout(measureHeight, 1000); // hack
   revealPunchlines();
   hidePunchlines();
   scrollToBottomAndUp(); // hack
@@ -391,11 +392,10 @@ function measureHeight() {
   const finalPadding = `${punchlineOffsetHeight - stickyElementOffsetHeight}px`;
   stickyElement.style.paddingBottom = finalPadding;
   // check
-  /*
   const WeStyles = window.getComputedStyle(stickyElement),
     WebottomPadding = parseFloat(WeStyles.paddingBottom);
+  // stickyElement.style.backgroundColor = 'pink'; // debug
   console.log("we Bottom Padding:", WebottomPadding);
-  */
 }
 </script>
 
