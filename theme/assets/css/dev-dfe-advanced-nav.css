@@ -621,16 +621,21 @@ p, li {
 }
 
 .rich-text-block {
-  max-width: 800px;
+  max-width: 600px;
   margin-top: 100px;
   margin-bottom: 100px;
 }
 
-.div-block {
+.container-navigation {
   width: 100%;
   max-width: 1100px;
   justify-content: space-between;
   align-items: center;
+  display: flex;
+}
+
+.collection-item {
+  justify-content: center;
   display: flex;
 }
 

@@ -4,6 +4,11 @@
   
   
   
+  
+  
+  
+  
+  
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="/assets/css/normalize.css" rel="stylesheet" type="text/css">
   <link href="/assets/css/components.css" rel="stylesheet" type="text/css">
@@ -56,22 +61,24 @@ a:focus,button:focus,input:focus,textarea:focus{outline:0!important}a{-webkit-to
     </div>
   </div>
   <div class="wrap-nav light">
-    <a href="{{ links.2f }}" class="logotype__wrap w-inline-block">
-      <div class="embed-logo w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="58.8" height="16.175">
-          <g style="fill:black">
-            <path d="M9.25 0a13.739 13.739 0 0 1 4.55.649 7.55 7.55 0 0 1 2.913 1.763 6.44 6.44 0 0 1 1.55 2.562 9.991 9.991 0 0 1 .462 3.05 9.312 9.312 0 0 1-.512 3.075 6.974 6.974 0 0 1-1.625 2.613 7.722 7.722 0 0 1-2.926 1.8 12.93 12.93 0 0 1-4.412.662H0V0ZM3.325 13.325h5.85a8.746 8.746 0 0 0 2.987-.437A4.8 4.8 0 0 0 14.05 11.7a4.418 4.418 0 0 0 1-1.7 6.526 6.526 0 0 0 .3-1.976 6.278 6.278 0 0 0-.3-1.949 4.234 4.234 0 0 0-1-1.65 4.842 4.842 0 0 0-1.888-1.151 8.973 8.973 0 0 0-2.987-.425h-5.85ZM39 0v2.774H26.55v4.351h10.2v2.6h-10.2v6.45h-3.324V0ZM46.326 9.425V13.4H58.8v2.775H43V0h15.776v2.775h-12.45V6.8h10.2v2.625Z"></path>
-          </g>
-        </svg></div>
-    </a>
-    <a href="{{ links.23 }}" data-w-id="4f33d647-f125-7902-456d-c246335d6440" class="link-nav w-inline-block">
-      <div class="link-text dark">{{ texts.-5f8cfd1a }}</div>
-      <div class="cta-round"><img src="{{ images.-e71017d.url }}" loading="lazy" alt="{{ images.-e71017d.alt | trim | escape }}" class="img-cta"></div>
-    </a>
+    <div class="container-navigation">
+      <a href="{{ links.2f }}" class="logotype__wrap w-inline-block">
+        <div class="embed-logo w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="58.8" height="16.175">
+            <g style="fill:black">
+              <path d="M9.25 0a13.739 13.739 0 0 1 4.55.649 7.55 7.55 0 0 1 2.913 1.763 6.44 6.44 0 0 1 1.55 2.562 9.991 9.991 0 0 1 .462 3.05 9.312 9.312 0 0 1-.512 3.075 6.974 6.974 0 0 1-1.625 2.613 7.722 7.722 0 0 1-2.926 1.8 12.93 12.93 0 0 1-4.412.662H0V0ZM3.325 13.325h5.85a8.746 8.746 0 0 0 2.987-.437A4.8 4.8 0 0 0 14.05 11.7a4.418 4.418 0 0 0 1-1.7 6.526 6.526 0 0 0 .3-1.976 6.278 6.278 0 0 0-.3-1.949 4.234 4.234 0 0 0-1-1.65 4.842 4.842 0 0 0-1.888-1.151 8.973 8.973 0 0 0-2.987-.425h-5.85ZM39 0v2.774H26.55v4.351h10.2v2.6h-10.2v6.45h-3.324V0ZM46.326 9.425V13.4H58.8v2.775H43V0h15.776v2.775h-12.45V6.8h10.2v2.625Z"></path>
+            </g>
+          </svg></div>
+      </a>
+      <a href="{{ links.23 }}" data-w-id="4f33d647-f125-7902-456d-c246335d6440" class="link-nav w-inline-block">
+        <div class="link-text dark">{{ texts.-5f8cfd1a }}</div>
+        <div class="cta-round"><img src="{{ images.-e71017d.url }}" loading="lazy" alt="{{ images.-e71017d.alt | trim | escape }}" class="img-cta"></div>
+      </a>
+    </div>
   </div>
   <section class="section privacypolicy wf-section">
     {%- assign collection = collections.legal-text | sort: "-created-on" -%}<div class="collection-list-wrapper-4 w-dyn-list">
       {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
-        {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
+        {%- for item in collection -%}<div role="listitem" class="collection-item w-dyn-item">
           <div class="rich-text-block w-richtext">{{ item.templateContent | markdown | markdown }}</div>
         </div>{%- endfor -%}
       </div>{%- endunless -%}
