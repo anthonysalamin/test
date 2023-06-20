@@ -206,7 +206,9 @@ Webflow.push(function () {
     event.preventDefault();
     console.log("prevented default form submission");
     // clean form data
-  	const formFields = form.querySelectorAll("input[data-name]");
+  	const formFields = form.querySelectorAll(
+      "input[data-name], textarea[data-name]"
+    );
     const formData = new FormData();
     formFields.forEach((field) => {
       const fieldName = field.getAttribute("data-name");
