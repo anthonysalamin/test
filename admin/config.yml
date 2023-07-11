@@ -737,26 +737,6 @@ collections:
             label: Text
             name: '-29f92c17'
             widget: string
-          - hint: 'Original text: Collaboration, key: 4bd32a25'
-            label: Text
-            name: 4bd32a25
-            widget: string
-          - hint: 'Original text: Lieu, key: 24230d'
-            label: Text
-            name: 24230d
-            widget: string
-          - hint: 'Original text: Date, key: 2063ce'
-            label: Text
-            name: 2063ce
-            widget: string
-          - hint: 'Original text: Client, key: 7877dfeb'
-            label: Text
-            name: 7877dfeb
-            widget: string
-          - hint: 'Original text: Projets similaires, key: -2a36a7c9'
-            label: Text
-            name: '-2a36a7c9'
-            widget: string
           - hint: 'Original text: 🦄 cette page n''existe pas, key: 30b4c443'
             label: Text
             name: 30b4c443
@@ -895,6 +875,36 @@ collections:
           - hint: 'Original text: Confirmer mes préférences et fermer, key: -c5b78c0'
             label: Text
             name: '-c5b78c0'
+            widget: string
+          - hint: 'Original text: Lieu, key: 24230d'
+            label: Text
+            name: 24230d
+            widget: string
+          - hint: 'Original text: Date, key: 2063ce'
+            label: Text
+            name: 2063ce
+            widget: string
+          - hint: >-
+              Original text: STATIC TEXT Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Suspendisse varius enim in eros elementum
+              tristique. Duis cursus, mi quis viverra ornare, eros dolor
+              interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus
+              nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+              risus tristique posuere., key: -43358109
+            label: Text
+            name: '-43358109'
+            widget: text
+          - hint: 'Original text: Collaboration, key: 4bd32a25'
+            label: Text
+            name: 4bd32a25
+            widget: string
+          - hint: 'Original text: Client, key: 7877dfeb'
+            label: Text
+            name: 7877dfeb
+            widget: string
+          - hint: 'Original text: Projets similaires, key: -2a36a7c9'
+            label: Text
+            name: '-2a36a7c9'
             widget: string
           - hint: >-
               Original text: Politique de confidentialité de quatreaplus.ch,
