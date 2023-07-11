@@ -80,9 +80,9 @@ collections:
             name: additional_tags
             widget: text
             required: false
-  - name: legal_text
-    label: Legal texts
-    folder: cms/legal-text
+  - name: news
+    label: News
+    folder: cms/news
     create: true
     identifier_field: name
     extension: md
@@ -108,25 +108,185 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - label: Text
+      - label: short description text
+        name: body
+        widget: markdown
+        required: false
+      - hint: image de preview de la news
+        name: f_thumbnail
+        label: thumbnail @ 800 x 800 px (1:1 ratio) | JPG | size max 100 Ko
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_images
+        label: images @ 1920 x 1080 px (4:3 or 3:4 ratio) | JPG | size max 250 Ko
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_linkedin-link-to-news
+        label: linkedin link to news
+        widget: string
+        required: false
+      - hint: news page
+        name: f_long-description-text
+        label: long description text
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_number-2
+        label: number
+        widget: string
+        required: false
+      - hint: ''
+        name: f_lieu
+        label: lieu
+        widget: string
+        required: false
+      - hint: ''
+        name: f_date
+        label: date
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: news
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[news].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: header
+    label: Headers
+    folder: cms/header
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: header
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[header].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: imprint
+    label: Imprints
+    folder: cms/imprint
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Mention légales (impressum etc...)
         name: body
         widget: markdown
         required: false
       - label: Tags
         widget: hidden
         name: tags
-        default: legal-text
+        default: imprint
       - label: Layout
         widget: hidden
         name: layout
-        default: '[legal-text].html'
+        default: '[imprint].html'
       - label: Publish Date
         name: date
         widget: datetime
       - *ref_0
-  - name: other_texts
-    label: Other texts
-    folder: cms/other-texts
+  - name: projets
+    label: Projets
+    folder: cms/projets
     create: true
     identifier_field: name
     extension: md
@@ -152,31 +312,208 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - hint: ''
-        name: f_main-introdution-text
-        label: Text
-        widget: text
+      - label: introduction (rich text)
+        name: body
+        widget: markdown
         required: false
-      - hint: ''
-        name: f_identifier-do-not-modify
-        label: Identifier (do not modify)
+      - hint: Petite image qui représente le projet
+        name: f_thumbnail
+        label: thumbnail @ 800 x 800 px (1:1 ratio) | JPG | size max 100 Ko
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: images du projet, svp respecter le format indiquer
+        name: f_images
+        label: images @ 1920 x 1080 px (4:3 or 3:4 ratio) | JPG | size max 250 Ko
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: >-
+          Est-ce que le projet est en "highlight" sur la landing page ? Si oui,
+          activer le switch (1 seul projet peut être en highlight).
+        name: f_highlight
+        label: highlight
+        widget: boolean
+        required: false
+        default: false
+      - hint: >-
+          Le projet fait-il partie des trois projets présentés sur la page
+          d'accueil ?
+        name: f_faetured
+        label: featured (max 3 projects)
+        widget: boolean
+        required: false
+        default: false
+      - hint: Ordre d'apparence du projet.
+        name: f_order
+        label: order
         widget: number
         required: false
+      - hint: 'Description du projet '
+        name: f_description-rich-text
+        label: description (rich text)
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_collaboration
+        label: collaboration
+        widget: string
+        required: false
+      - hint: ''
+        name: f_location
+        label: location
+        widget: string
+        required: false
+      - hint: ''
+        name: f_date
+        label: date
+        widget: string
+        required: false
+      - hint: ''
+        name: f_client
+        label: client
+        widget: string
+        required: false
+      - hint: ''
+        name: f_project-number
+        label: project number
+        widget: string
+        required: false
+      - hint: (max 3 projets similaires)
+        name: f_related-project
+        label: related project
+        widget: relation
+        required: false
+        collection: projets
+        value_field: cms/projets/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: si le projet est en highlight
+        name: f_image-1
+        label: image 1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: si le projet est en highlight
+        name: f_image-2
+        label: image 2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: si le projet est en highlight
+        name: f_image-3
+        label: image 3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: si le projet est en highlight
+        name: f_image-4
+        label: image 4
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: si le projet est en highlight
+        name: f_image-5
+        label: image 5
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
       - label: Tags
         widget: hidden
         name: tags
-        default: other-texts
+        default: projets
       - label: Layout
         widget: hidden
         name: layout
-        default: '[other-texts].html'
+        default: '[projets].html'
       - label: Publish Date
         name: date
         widget: datetime
       - *ref_0
-  - name: headlines
-    label: Headlines
-    folder: cms/headlines
+  - name: highlight
+    label: Highlights
+    folder: cms/highlight
     create: true
     identifier_field: name
     extension: md
@@ -202,7 +539,24 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - hint: ''
+      - hint: 'Image au format JPG, taille max: 1920px de largeur @ 500 Ko.'
+        name: f_slide-thumbnail
+        label: slide
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: Ne pas modifier ce champs.
         name: f_order
         label: order
         widget: number
@@ -210,61 +564,11 @@ collections:
       - label: Tags
         widget: hidden
         name: tags
-        default: headlines
+        default: highlight
       - label: Layout
         widget: hidden
         name: layout
-        default: '[headlines].html'
-      - label: Publish Date
-        name: date
-        widget: datetime
-      - *ref_0
-  - name: highlights
-    label: Highlights
-    folder: cms/highlights
-    create: true
-    identifier_field: name
-    extension: md
-    slug: '{{slug}}'
-    fields:
-      - hint: ''
-        name: title
-        label: Highlight name
-        widget: string
-        required: true
-      - hint: ''
-        name: created-on
-        label: Created On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: updated-on
-        label: Updated On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: published-on
-        label: Published On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: f_description
-        label: Description
-        widget: text
-        required: false
-      - hint: ''
-        name: f_order
-        label: Order
-        widget: string
-        required: false
-      - label: Tags
-        widget: hidden
-        name: tags
-        default: highlights
-      - label: Layout
-        widget: hidden
-        name: layout
-        default: '[highlights].html'
+        default: '[highlight].html'
       - label: Publish Date
         name: date
         widget: datetime
@@ -359,193 +663,422 @@ collections:
             name: title
             widget: hidden
             default: Texts
-          - hint: >-
-              Original text: I hereby affirm that I have thoroughly perused,
-              comprehended, and willingly acknowledge the Privacy Policy of
-              DFE., key: -4c26e57f
+          - hint: 'Original text: Accueil, key: 1d0e9f94'
             label: Text
-            name: '-4c26e57f'
-            widget: text
-          - hint: >-
-              Original text: Thank you, your message has been sent!, key:
-              33e8f484
-            label: Text
-            name: 33e8f484
+            name: 1d0e9f94
             widget: string
-          - hint: 'Original text: Go back, key: 6b3550ff'
+          - hint: 'Original text: Projets, key: 50c8e507'
             label: Text
-            name: 6b3550ff
+            name: 50c8e507
             widget: string
-          - hint: 'Original text: Something went wrong, try again., key: 2fff9fee'
+          - hint: 'Original text: News, key: 24fef3'
             label: Text
-            name: 2fff9fee
+            name: 24fef3
             widget: string
-          - hint: 'Original text: Get an edge, key: -5f8cfd1a'
+          - hint: 'Original text: Contact, key: -64104400'
             label: Text
-            name: '-5f8cfd1a'
-            widget: string
-          - hint: 'Original text: We, key: aee'
-            label: Text
-            name: aee
+            name: '-64104400'
             widget: string
           - hint: 'Original text: No items found., key: 3d503d2b'
             label: Text
             name: 3d503d2b
             widget: string
+          - hint: 'Original text: atelier d’architecture, key: e3d1e2c'
+            label: Text
+            name: e3d1e2c
+            widget: string
+          - hint: 'Original text: alpine actuelle, key: 589dab68'
+            label: Text
+            name: 589dab68
+            widget: string
+          - hint: 'Original text: Voir tout le projet, key: 49f1292b'
+            label: Text
+            name: 49f1292b
+            widget: string
+          - hint: 'Original text: Sélection , key: -788f2748'
+            label: Text
+            name: '-788f2748'
+            widget: string
+          - hint: 'Original text: de Projets, key: 389e7c68'
+            label: Text
+            name: 389e7c68
+            widget: string
+          - hint: 'Original text: Tous les projets, key: 5566dfa'
+            label: Text
+            name: 5566dfa
+            widget: string
+          - hint: 'Original text: quatreaplus.ch, key: -6196267e'
+            label: Text
+            name: '-6196267e'
+            widget: string
+          - hint: 'Original text: camil@quatreaplus.ch, key: -7843b5b0'
+            label: Text
+            name: '-7843b5b0'
+            widget: string
+          - hint: 'Original text: +41 78 812 09 60, key: -2e56a39d'
+            label: Text
+            name: '-2e56a39d'
+            widget: string
           - hint: >-
-              Original text: Mastering the art of understanding and solving
-              complex problems., key: -2d605cbc
+              Original text: atelier d'architecture alpine actuelle Sàrl, key:
+              -1751893b
             label: Text
-            name: '-2d605cbc'
+            name: '-1751893b'
             widget: string
-          - hint: 'Original text: Contact us, key: 7f274abe'
+          - hint: 'Original text: Rue du Rhône 4, key: -227171a8'
             label: Text
-            name: 7f274abe
+            name: '-227171a8'
+            widget: string
+          - hint: 'Original text: 1950 Sion, key: -36469dee'
+            label: Text
+            name: '-36469dee'
+            widget: string
+          - hint: 'Original text: Imprint, key: -29f92c17'
+            label: Text
+            name: '-29f92c17'
+            widget: string
+          - hint: 'Original text: Collaboration, key: 4bd32a25'
+            label: Text
+            name: 4bd32a25
+            widget: string
+          - hint: 'Original text: Lieu, key: 24230d'
+            label: Text
+            name: 24230d
+            widget: string
+          - hint: 'Original text: Date, key: 2063ce'
+            label: Text
+            name: 2063ce
+            widget: string
+          - hint: 'Original text: Client, key: 7877dfeb'
+            label: Text
+            name: 7877dfeb
+            widget: string
+          - hint: 'Original text: Projets similaires, key: -2a36a7c9'
+            label: Text
+            name: '-2a36a7c9'
+            widget: string
+          - hint: 'Original text: 🦄 cette page n''existe pas, key: 30b4c443'
+            label: Text
+            name: 30b4c443
+            widget: string
+          - hint: 'Original text: En cliquant sur , key: -5767796a'
+            label: Text
+            name: '-5767796a'
+            widget: string
+          - hint: 'Original text: "Accepter", key: 6af87d0b'
+            label: Text
+            name: 6af87d0b
             widget: string
           - hint: >-
-              Original text: © 2014-2023 DF Enterprises LLC, Dubai, key:
-              -153fcf9e
+              Original text: , vous acceptez que tous les cookies soient stockés
+              sur votre appareil afin d'améliorer la navigation sur le site,
+              d'analyser l'utilisation du site et de nous aider dans nos efforts
+              de marketing. Consultez notre , key: 1cb658ce
             label: Text
-            name: '-153fcf9e'
-            widget: string
-          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
-            label: Text
-            name: '-3fbde6f6'
-            widget: string
-          - hint: 'Original text: Data, key: 2063ca'
-            label: Text
-            name: 2063ca
-            widget: string
-          - hint: >-
-              Original text: Analyzing complex financial data requires a
-              systematic approach. We identify key variables and organise data
-              into meaningful categories which are evaluated using statistical
-              techniques and software tools to uncover patterns, trends, and
-              relationships. This is utilised for interpreting results to make
-              informed decisions, mitigate risks, and optimise financial
-              performance, ensuring sound business strategies., key: -723a601b
-            label: Text
-            name: '-723a601b'
+            name: 1cb658ce
             widget: text
-          - hint: 'Original text: Managerial, key: b8aa7a7'
+          - hint: 'Original text: politique de confidentialité, key: 6ad7d527'
             label: Text
-            name: b8aa7a7
+            name: 6ad7d527
+            widget: string
+          - hint: 'Original text:  pour plus d''informations., key: 1442d302'
+            label: Text
+            name: 1442d302
+            widget: string
+          - hint: 'Original text: Préférences, key: -6bfbaf20'
+            label: Text
+            name: '-6bfbaf20'
+            widget: string
+          - hint: 'Original text: Refuser, key: -5c134542'
+            label: Text
+            name: '-5c134542'
+            widget: string
+          - hint: 'Original text: Accepter, key: -7c16fc2b'
+            label: Text
+            name: '-7c16fc2b'
             widget: string
           - hint: >-
-              Original text: It is crucial to establish clear and measurable
-              goals that align with an organization's vision. Cultivating a
-              culture of accountability and empowerment among teams fosters a
-              motivated workforce. Adapting to market changes, encouraging
-              innovation, and promoting effective communication channels are key
-              to successful managerial imperatives., key: -636c0dc
+              Original text: Centre de préférences pour la politique de
+              protection de la vie privée, key: 2dc7a23e
             label: Text
-            name: '-636c0dc'
+            name: 2dc7a23e
+            widget: string
+          - hint: >-
+              Original text: Lorsque vous visitez des sites web, ceux-ci peuvent
+              stocker ou récupérer des données dans votre navigateur. Ce
+              stockage est souvent nécessaire pour la fonctionnalité de base du
+              site web. Il peut être utilisé à des fins de marketing, d'analyse
+              et de personnalisation du site, par exemple pour enregistrer vos
+              préférences. La protection de la vie privée est importante pour
+              nous, c'est pourquoi vous avez la possibilité de désactiver
+              certains types de stockage qui ne sont pas nécessaires au
+              fonctionnement de base du site web. Le blocage de certaines
+              catégories peut avoir un impact sur votre expérience du site web.,
+              key: 5719b980
+            label: Text
+            name: 5719b980
             widget: text
-          - hint: 'Original text: Advanced Technology, key: 67430fca'
+          - hint: 'Original text: Rejeter tous les cookies, key: -1bb35ed1'
             label: Text
-            name: 67430fca
+            name: '-1bb35ed1'
+            widget: string
+          - hint: 'Original text: Accepter tous les cookies, key: -79c29fd3'
+            label: Text
+            name: '-79c29fd3'
             widget: string
           - hint: >-
-              Original text: Advanced blockchain technology can revolutionise
-              business decision-making by enhancing transparency, security, and
-              efficiency. It provides immutable and decentralised records,
-              enabling reliable data verification. Smart contracts automate
-              processes and ensure trust among parties. Real-time data analytics
-              and traceability enhance insights, enabling informed and
-              data-driven decisions, ultimately improving operational and
-              strategic outcomes., key: 5d9054c5
+              Original text: Gérer les préférences en matière de consentement
+              par catégorie, key: 351868e0
             label: Text
-            name: 5d9054c5
+            name: '351868e0'
+            widget: string
+          - hint: 'Original text: Essentiel, key: 16a393aa'
+            label: Text
+            name: 16a393aa
+            widget: string
+          - hint: 'Original text: Toujours actif, key: -5c954f1a'
+            label: Text
+            name: '-5c954f1a'
+            widget: string
+          - hint: >-
+              Original text: Ces éléments sont nécessaires pour permettre le
+              fonctionnement de base du site web., key: -7b9165df
+            label: Text
+            name: '-7b9165df'
+            widget: string
+          - hint: 'Original text: Marketing, key: 3fc9ea06'
+            label: Text
+            name: 3fc9ea06
+            widget: string
+          - hint: 'Original text: Essential, key: 16a3932e'
+            label: Text
+            name: 16a3932e
+            widget: string
+          - hint: >-
+              Original text: Ces éléments sont utilisés pour diffuser des
+              publicités plus pertinentes pour vous et vos centres d'intérêt.
+              Ils peuvent également être utilisés pour limiter le nombre de fois
+              que vous voyez une publicité et mesurer l'efficacité des campagnes
+              publicitaires. Les réseaux publicitaires les placent généralement
+              avec l'autorisation de l'exploitant du site web., key: -7979fb1e
+            label: Text
+            name: '-7979fb1e'
             widget: text
-          - hint: 'Original text: Ooops, no items found., key: 3901bee5'
+          - hint: 'Original text: Personnalisation, key: 6fc5ea07'
             label: Text
-            name: 3901bee5
+            name: 6fc5ea07
             widget: string
           - hint: >-
-              Original text: Financial Engineers is a digital transformation
-              alliance focused on nurturing creative environments. As a global
-              community of technology enthusiasts, we analyse frontier financial
-              markets and study potential future applications of blockchain
-              technology., key: -4cfc895
+              Original text: Ces éléments permettent au site web de se souvenir
+              des choix que vous faites (tels que votre nom d'utilisateur, votre
+              langue ou la région dans laquelle vous vous trouvez) et de fournir
+              des fonctions améliorées et plus personnelles. Par exemple, un
+              site web peut vous fournir des bulletins météorologiques locaux ou
+              des informations sur la circulation en stockant des données sur
+              votre position actuelle., key: -1d143c52
             label: Text
-            name: '-4cfc895'
+            name: '-1d143c52'
+            widget: text
+          - hint: 'Original text: Analyse, key: 2fb3f453'
+            label: Text
+            name: 2fb3f453
+            widget: string
+          - hint: >-
+              Original text: Ces éléments aident l'opérateur du site web à
+              comprendre comment son site fonctionne, comment les visiteurs
+              interagissent avec le site et s'il y a des problèmes techniques.
+              Ce type de stockage ne recueille généralement pas d'informations
+              permettant d'identifier un visiteur., key: -46635a4
+            label: Text
+            name: '-46635a4'
+            widget: text
+          - hint: 'Original text: Confirmer mes préférences et fermer, key: -c5b78c0'
+            label: Text
+            name: '-c5b78c0'
+            widget: string
+          - hint: >-
+              Original text: Politique de confidentialité de quatreaplus.ch,
+              key: -26959398
+            label: Text
+            name: '-26959398'
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: Dernière mise à jour : 4 juin 2023, key: 1db58120'
+            label: Text
+            name: 1db58120
+            widget: string
+          - hint: >-
+              Original text: QUATREAPLUS.CH S'ENGAGE À PROTÉGER LA VIE PRIVÉE ET
+              LES INFORMATIONS PERSONNELLES DES VISITEURS DE SON SITE INTERNET.
+              LA PRÉSENTE POLITIQUE DE CONFIDENTIALITÉ DÉCRIT LA MANIÈRE DONT
+              NOUS RECUEILLONS, UTILISONS ET PROTÉGEONS VOS INFORMATIONS LORSQUE
+              VOUS VISITEZ NOTRE SITE WEB QUATREAPLUS.CH. EN ACCÉDANT À NOTRE
+              SITE WEB ET EN L'UTILISANT, VOUS ACCEPTEZ LES CONDITIONS ET
+              PRATIQUES DÉCRITES DANS CETTE POLITIQUE DE CONFIDENTIALITÉ., key:
+              6b31f01f
+            label: Text
+            name: 6b31f01f
             widget: text
           - hint: >-
-              Original text: Our network is comprised of early adopters, finance
-              professionals, family offices and experienced software engineers.
-              Combined, FE possess valuable experience in the digital economy,
-              providing our members with reliable insight into emerging
-              technologies., key: 7fc57810
+              Original text: Les informations que nous recueillons :, key:
+              7cfdc76
             label: Text
-            name: 7fc57810
-            widget: text
-          - hint: 'Original text: 01, key: 601'
-            label: Text
-            name: '601'
-            widget: string
-          - hint: 'Original text: 02, key: 602'
-            label: Text
-            name: '602'
-            widget: string
-          - hint: 'Original text: 03, key: 603'
-            label: Text
-            name: '603'
-            widget: string
-          - hint: 'Original text: Thank you !, key: 4343178a'
-            label: Text
-            name: 4343178a
-            widget: string
-          - hint: 'Original text: What’s a Rich Text element?, key: -3c0dda4d'
-            label: Text
-            name: '-3c0dda4d'
+            name: 7cfdc76
             widget: string
           - hint: >-
-              Original text: The rich text element allows you to create and
-              format headings, paragraphs, blockquotes, images, and video all in
-              one place instead of having to add and format them individually.
-              Just double-click and easily create content., key: 2e633c6a
+              Original text: Lorsque vous visitez notre site web, nous pouvons
+              collecter certaines informations, notamment :, key: -268319bb
             label: Text
-            name: 2e633c6a
-            widget: text
-          - hint: 'Original text: Static and dynamic content editing, key: 57fa6135'
-            label: Text
-            name: 57fa6135
-            widget: string
-          - hint: >-
-              Original text: A rich text element can be used with static or
-              dynamic content. For static content, just drop it into any page
-              and begin editing. For dynamic content, add a rich text field to
-              any collection and then connect a rich text element to that field
-              in the settings panel. Voila!, key: -a016b40
-            label: Text
-            name: '-a016b40'
+            name: '-268319bb'
             widget: text
           - hint: >-
-              Original text: How to customize formatting for each rich text,
-              key: -4bffb26e
+              Original text: Informations personnelles : Nous pouvons recueillir
+              des informations personnelles, telles que votre nom, votre adresse
+              électronique et vos coordonnées, uniquement si vous nous les
+              fournissez volontairement par le biais de formulaires de contact
+              ou de fonctions d'abonnement., key: -5afa620f
             label: Text
-            name: '-4bffb26e'
+            name: '-5afa620f'
+            widget: text
+          - hint: >-
+              Original text: Informations relatives à l'utilisation : Nous
+              pouvons recueillir des informations non personnellement
+              identifiables sur votre interaction avec notre site web, telles
+              que votre adresse IP, votre type de navigateur, des informations
+              sur votre appareil, les pages visitées et l'URL de référence. Ces
+              informations sont collectées par le biais de cookies et de
+              technologies similaires et sont utilisées pour analyser les
+              tendances d'utilisation du site web et améliorer nos services.,
+              key: 33522c64
+            label: Text
+            name: 33522c64
+            widget: text
+          - hint: 'Original text: Utilisation des informations :, key: -177bcf3a'
+            label: Text
+            name: '-177bcf3a'
             widget: string
           - hint: >-
-              Original text: Headings, paragraphs, blockquotes, figures, images,
-              and figure captions can all be styled after a class is added to
-              the rich text element using the "When inside of" nested selector
-              system., key: -43ba1153
+              Original text: Nous pouvons utiliser les informations collectées
+              aux fins suivantes :, key: e393a3e
             label: Text
-            name: '-43ba1153'
+            name: e393a3e
+            widget: string
+          - hint: >-
+              Original text: Fournir et améliorer nos services : Nous pouvons
+              utiliser vos informations personnelles pour répondre à vos
+              demandes, vous fournir les informations demandées et vous proposer
+              un contenu pertinent et des mises à jour concernant nos services.,
+              key: 742430a5
+            label: Text
+            name: 742430a5
             widget: text
-          - hint: 'Original text: sdfsadf, key: 73e45905'
+          - hint: >-
+              Original text: Améliorer l'expérience du site web : Nous pouvons
+              utiliser les informations d'utilisation pour analyser les
+              performances du site web, suivre les préférences des utilisateurs
+              et optimiser la fonctionnalité, la sécurité et le contenu de notre
+              site web., key: 2661f7e2
             label: Text
-            name: '73e45905'
-            widget: string
-          - hint: 'Original text: asdfasdf, key: -2fd19198'
+            name: 2661f7e2
+            widget: text
+          - hint: >-
+              Original text: Pour communiquer avec vous : Nous pouvons utiliser
+              vos coordonnées pour vous envoyer des notifications
+              administratives, des mises à jour, des bulletins d'information,
+              des communications marketing et d'autres informations relatives à
+              quatreaplus.ch. Vous pouvez à tout moment refuser de recevoir ces
+              communications., key: -6cdc0f4f
             label: Text
-            name: '-2fd19198'
-            widget: string
-          - hint: 'Original text: asdfa, key: 58cb2ad'
+            name: '-6cdc0f4f'
+            widget: text
+          - hint: 'Original text: Partage d''informations :, key: 26648fb8'
             label: Text
-            name: 58cb2ad
+            name: 26648fb8
             widget: string
+          - hint: >-
+              Original text: Nous respectons votre vie privée et ne divulguerons
+              pas vos informations personnelles à des tiers, sauf si la loi
+              l'exige ou si vous y consentez. Toutefois, nous pouvons partager
+              des informations non personnellement identifiables à des fins
+              d'analyse ou de marketing avec des prestataires de services tiers
+              de confiance., key: -576957ba
+            label: Text
+            name: '-576957ba'
+            widget: text
+          - hint: 'Original text: Sécurité des données :, key: -669daf54'
+            label: Text
+            name: '-669daf54'
+            widget: string
+          - hint: >-
+              Original text: Nous utilisons des mesures de sécurité conformes
+              aux normes industrielles pour protéger vos informations
+              personnelles contre l'accès, la divulgation, l'altération ou la
+              destruction non autorisés. Toutefois, veuillez noter qu'aucune
+              transmission de données sur l'internet ou méthode de stockage
+              électronique n'est totalement sûre. Nous ne pouvons donc pas
+              garantir la sécurité absolue de vos informations., key: -636156ec
+            label: Text
+            name: '-636156ec'
+            widget: text
+          - hint: 'Original text: Liens externes :, key: 172ef8bb'
+            label: Text
+            name: 172ef8bb
+            widget: string
+          - hint: >-
+              Original text: Notre site web peut contenir des liens vers des
+              sites web de tiers pour votre commodité et votre information. Ces
+              sites web externes fonctionnent de manière indépendante et ont
+              leur propre politique de confidentialité. Nous n'avons aucun
+              contrôle sur leur contenu ou leurs pratiques et, par conséquent,
+              nous ne sommes pas responsables des pratiques en matière de
+              protection de la vie privée ou du contenu de ces sites web., key:
+              -56665a75
+            label: Text
+            name: '-56665a75'
+            widget: text
+          - hint: >-
+              Original text: Modifications de la politique de confidentialité :,
+              key: 2b8fabf6
+            label: Text
+            name: 2b8fabf6
+            widget: string
+          - hint: >-
+              Original text: Nous nous réservons le droit de modifier ou de
+              mettre à jour la présente politique de confidentialité à tout
+              moment. Toute modification entrera en vigueur dès la publication
+              de la version mise à jour sur notre site web. Nous vous
+              encourageons à consulter régulièrement la présente politique de
+              confidentialité afin de rester informé de la manière dont nous
+              collectons, utilisons et protégeons vos informations., key:
+              3c2da67a
+            label: Text
+            name: 3c2da67a
+            widget: text
+          - hint: 'Original text: Contactez-nous :, key: 5ed38491'
+            label: Text
+            name: 5ed38491
+            widget: string
+          - hint: >-
+              Original text: Si vous avez des questions, des préoccupations ou
+              des demandes concernant la présente politique de confidentialité
+              ou nos pratiques en matière de confidentialité, veuillez nous
+              contacter à l'adresse suivante : info@quatreaplus.ch., key:
+              22f929a8
+            label: Text
+            name: 22f929a8
+            widget: text
+          - hint: >-
+              Original text: EN UTILISANT NOTRE SITE WEB, VOUS RECONNAISSEZ
+              AVOIR LU ET COMPRIS LA PRÉSENTE POLITIQUE DE PROTECTION DE LA VIE
+              PRIVÉE ET CONSENTEZ À LA COLLECTE, À L'UTILISATION ET À LA
+              DIVULGATION DE VOS INFORMATIONS COMME DÉCRIT DANS LE PRÉSENT
+              DOCUMENT., key: 3c60d3b
+            label: Text
+            name: 3c60d3b
+            widget: text
       - label: Links
         name: links
         file: cms/_data/links.json
@@ -558,13 +1091,37 @@ collections:
             label: Link
             name: 2f
             widget: string
+          - hint: 'Original link: /projets, key: -1875e8'
+            label: Link
+            name: '-1875e8'
+            widget: string
+          - hint: 'Original link: /news, key: 2c9db82'
+            label: Link
+            name: 2c9db82
+            widget: string
+          - hint: >-
+              Original link: mailto:camil@quatreaplus.ch?subject=Contact, key:
+              -326c7d78
+            label: Link
+            name: '-326c7d78'
+            widget: string
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
             widget: string
-          - hint: 'Original link: /privacy-policy, key: 618fe506'
+          - hint: >-
+              Original link: mailto:camil@quatreaplus.ch?subject=quatreaplus.ch,
+              key: 37bb29fa
             label: Link
-            name: 618fe506
+            name: 37bb29fa
+            widget: string
+          - hint: 'Original link: /imprint, key: -7ada8706'
+            label: Link
+            name: '-7ada8706'
+            widget: string
+          - hint: 'Original link: /politique-de-confidentialite, key: -196dfc8e'
+            label: Link
+            name: '-196dfc8e'
             widget: string
       - label: Images
         name: images
@@ -575,59 +1132,7 @@ collections:
             widget: hidden
             default: Images
           - label: Image
-            name: 10ea7bb3
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 423ffbb4
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-e71017d'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-7301b384'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 2359efcb
+            name: '-2cff83dc'
             widget: object
             fields:
               - name: url

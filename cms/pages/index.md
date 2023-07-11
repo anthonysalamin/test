@@ -6,18 +6,15 @@ slug: ''
 tags: pages
 seo:
   noindex: false
-  title: DF Enterprises LLC, Dubai دبي
-  description: >-
-    Using Artificial Intelligence to study cognitive phenomena of market
-    participants.
-  og:title: DF Enterprises LLC, Dubai دبي
+  title: quatreaplus | atelier d’architecture alpine actuelle
+  description: quatreaplus, atelier d’architecture alpine actuelle.
+  og:title: quatreaplus | atelier d’architecture alpine actuelle
   additional_tags: >-
-    <meta content="Using Artificial Intelligence to study cognitive phenomena of
-    market participants." property="og:description"><meta content="Using
-    Artificial Intelligence to study cognitive phenomena of market
-    participants." property="twitter:description"><meta property="og:type"
+    <meta content="quatreaplus, atelier d’architecture alpine actuelle."
+    property="og:description"><meta content="quatreaplus, atelier d’architecture
+    alpine actuelle." property="twitter:description"><meta property="og:type"
     content="website">
-  twitter:title: DF Enterprises LLC, Dubai دبي
+  twitter:title: quatreaplus | atelier d’architecture alpine actuelle
 ---
 
 
