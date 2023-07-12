@@ -6,7 +6,7 @@ slug: ''
 tags: pages
 seo:
   noindex: false
-  title: webflow udesly netlify
+  title: udesly no collection in template
 ---
 
 
