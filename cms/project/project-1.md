@@ -1,15 +1,10 @@
 ---
-f_paragraph: lorem ipsum
+f_paragraph: lorem ipsum project 1
 title: project 1
 slug: project-1
-updated-on: '2023-07-11T16:11:33.509Z'
+updated-on: '2023-07-12T07:52:18.703Z'
 created-on: '2023-07-11T15:43:25.575Z'
 published-on: '2023-07-11T16:12:06.698Z'
-f_image:
-  url: >-
-    https://uploads-ssl.webflow.com/64ad788fa872720a9a09cb2b/64ad7ebd92730c2a06d440fa_placeholder.png
-  alt: null
-f_is-live: true
 layout: '[project].html'
 tags: project
 ---

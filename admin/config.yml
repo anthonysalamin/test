@@ -109,33 +109,10 @@ collections:
         widget: datetime
         required: false
       - hint: ''
-        name: f_is-live
-        label: is live ?
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
         name: f_paragraph
         label: texte
         widget: text
         required: false
-      - hint: ''
-        name: f_image
-        label: image
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
       - label: Tags
         widget: hidden
         name: tags
