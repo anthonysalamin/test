@@ -80,6 +80,46 @@ collections:
             name: additional_tags
             widget: text
             required: false
+  - name: authors
+    label: Authors
+    folder: cms/authors
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: authors
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[authors].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
   - name: project
     label: Projects
     folder: cms/project
